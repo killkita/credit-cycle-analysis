@@ -58,28 +58,20 @@ over 25 months).
 ---
 
 ## Project Structure
+
+```
 credit-cycle-analysis/
-
-├── data/                         # SQLite database and saved charts
-
+├── data/                              # SQLite database and saved charts
 ├── notebooks/
-
-│   ├── 01_verify_data.ipynb      # SQL verification queries
-
+│   ├── 01_verify_data.ipynb           # SQL verification queries
 │   ├── 02_exploratory_analysis.ipynb  # Time series visualisation
-
-│   ├── 03_lag_analysis.ipynb     # Cross-correlation analysis
-
+│   ├── 03_lag_analysis.ipynb          # Cross-correlation analysis
 │   └── 04_regime_comparison.ipynb     # Hiking cycle comparison
-
 ├── scripts/
-
-│   └── ingest.py                 # FRED API data pipeline
-
+│   └── ingest.py                      # FRED API data pipeline
 ├── requirements.txt
-
 └── README.md
-
+```
 
 ---
 
