@@ -104,5 +104,5 @@ Cross-correlation does not imply causation as other macroeconomic factors includ
 
 ## Author
 
-**Kita** | ~ Aspiring data analyst playing with Python ~
+**kita** | ~ Aspiring data analyst playing with Python ~
 [GitHub](https://github.com/killkita)
