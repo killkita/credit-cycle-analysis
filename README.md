@@ -5,30 +5,25 @@
 
 ---
 
-## Project Overview
+## Overview
 
-This project investigates how different credit markets respond to Federal Reserve interest 
-rate hikes, and whether the speed and severity of that response has changed across cycles.
+This project looks at how different credit markets respond to Federal Reserve rate hikes and whether the speed of that response has changed across historical tightening cycles.
 
-Using 36 years of Federal Reserve data (1990–2026), I built a SQLite database from the 
-FRED API, conducted exploratory analysis across five hiking cycles, and applied 
-cross-correlation analysis to quantify the transmission lag between policy rate changes 
-and credit market responses.
+Using 36 years of Federal Reserve data pulled via the FRED API, I built a SQLite database, conducted exploratory analysis across five hiking cycles, and applied cross-correlation analysis to measure how long each credit market takes to respond to a policy rate change.
 
 ---
 
-## The Core Question
+## The Question
 
-**When the Fed raises rates, how quickly do different credit markets respond — 
-and did the 2022–23 hiking cycle behave differently to historical precedent?**
+When the Fed raises rates, how quickly do different credit markets respond and did the 2022 to 2023 hiking cycle behave differently to what came before?
 
 ---
 
-## Key Findings
+## What I Found
 
-### 1. Transmission Lags Vary Significantly by Credit Type
-Cross-correlation analysis across 36 years of monthly data revealed three distinct 
-response speeds:
+### Transmission lags vary significantly by credit type
+
+Cross-correlation analysis across 36 years of monthly data revealed three distinct response speeds:
 
 | Credit Market | Peak Lag | Correlation |
 |---|---|---|
@@ -36,24 +31,15 @@ response speeds:
 | Commercial & Industrial Loans | 3 months | 0.174 |
 | Total Consumer Credit | 11 months | 0.144 |
 
-Mortgage markets reprice almost immediately as they track Treasury yields in real time. 
-Business lending contracts within a quarter as companies respond to higher borrowing costs. 
-Consumer credit takes nearly a full year to slow — households are the last to feel the 
-impact of monetary tightening.
+Mortgage markets reprice almost immediately because they track Treasury yields in real time. Business lending pulls back within a quarter as companies react to higher borrowing costs. Consumer credit takes nearly a full year to slow down, making households the last to feel the impact of monetary tightening.
 
-### 2. The 2022–23 Cycle Was Structurally Different
-Compared to the four prior hiking cycles (1994–95, 1999–00, 2004–06, 2015–18):
+### The 2022 to 2023 cycle was structurally different
 
-- **Mortgage rates** spiked +2.7pp within months — faster and larger than any prior cycle
-- **Commercial loans** peaked at month 10 and reversed — the only cycle to show a clear 
-  contraction within the cycle window
-- **Consumer credit** grew more aggressively than any prior cycle, suggesting pandemic-era 
-  savings insulated households from the immediate impact of rate rises
+Compared to the four prior hiking cycles, mortgage rates spiked faster and further than any previous cycle, rising 2.7 percentage points within months. Commercial loans were the only cycle to peak and then reverse mid-cycle, contracting from month 10 onwards. Consumer credit grew more aggressively than in any prior cycle, likely because pandemic era savings insulated households from the immediate impact of rising rates.
 
-### 3. The 2022–23 Cycle Was the Most Aggressive in the Dataset
-At +4.92% over 17 months, it delivered the largest rate increase in the shortest timeframe 
-of any cycle since 1994 — nearly 50% larger than the next biggest (2004–06: +3.96% 
-over 25 months).
+### It was also the most aggressive cycle in the dataset
+
+At +4.92% over 17 months, the 2022 to 2023 cycle delivered the largest rate increase in the shortest timeframe since 1994, nearly 50% larger than the next biggest cycle which was 2004 to 2006 at +3.96% over 25 months.
 
 ---
 
@@ -61,14 +47,14 @@ over 25 months).
 
 ```
 credit-cycle-analysis/
-├── data/                              # SQLite database and saved charts
+├── data/                              
 ├── notebooks/
-│   ├── 01_verify_data.ipynb           # SQL verification queries
-│   ├── 02_exploratory_analysis.ipynb  # Time series visualisation
-│   ├── 03_lag_analysis.ipynb          # Cross-correlation analysis
-│   └── 04_regime_comparison.ipynb     # Hiking cycle comparison
+│   ├── 01_verify_data.ipynb           
+│   ├── 02_exploratory_analysis.ipynb  
+│   ├── 03_lag_analysis.ipynb          
+│   └── 04_regime_comparison.ipynb     
 ├── scripts/
-│   └── ingest.py                      # FRED API data pipeline
+│   └── ingest.py                      
 ├── requirements.txt
 └── README.md
 ```
@@ -77,8 +63,7 @@ credit-cycle-analysis/
 
 ## Data Sources
 
-All data sourced from the [Federal Reserve Economic Data (FRED)](https://fred.stlouisfed.org/) 
-via the `fredapi` Python library:
+All data sourced from the [Federal Reserve Economic Data (FRED)](https://fred.stlouisfed.org/) via the `fredapi` Python library:
 
 | Series ID | Description |
 |---|---|
@@ -94,24 +79,18 @@ via the `fredapi` Python library:
 ## How to Run
 
 ```bash
-# Clone the repo
 git clone https://github.com/killkita/credit-cycle-analysis.git
 cd credit-cycle-analysis
 
-# Create and activate virtual environment
 python3.11 -m venv venv
 source venv/bin/activate
 
-# Install dependencies
 pip install -r requirements.txt
 
-# Add your FRED API key to a .env file
 echo "FRED_API_KEY=your_key_here" > .env
 
-# Run the data pipeline
 python scripts/ingest.py
 
-# Open notebooks in order
 jupyter notebook
 ```
 
@@ -119,14 +98,11 @@ jupyter notebook
 
 ## Limitations
 
-- Cross-correlation does not imply causation — other macroeconomic factors 
-  (inflation expectations, bank lending standards, fiscal policy) influence credit markets simultaneously
-- FRED data is revised retrospectively, so early observations may differ from real-time data
-- The sample covers five hiking cycles which limits statistical generalisation
+Cross-correlation does not imply causation as other macroeconomic factors including inflation expectations, bank lending standards, and fiscal policy all influence credit markets simultaneously. FRED data is also revised retrospectively so early observations may differ from what was available in real time. Finally, five hiking cycles is a relatively small sample which limits how far the findings can be generalised.
 
 ---
 
 ## Author
 
-**kita** | Data Analyst  
+**Kita** | ~ Aspiring data analyst playing with Python ~
 [GitHub](https://github.com/killkita)
